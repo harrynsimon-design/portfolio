@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>박영선 | 간호학과 포트폴리오</title>
+  <style>
+    :root {
+      --primary: #B85042;
+      --secondary: #E7E8D1;
+      --bg-light: #FAF9F4;
+      --text-dark: #2B2623;
+      --text-muted: #5C544F;
+      --white: #FFFFFF;
+      --border-color: rgba(184, 80, 66, 0.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Malgun Gothic", "맑은 고딕", sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.65;
+    }
+
+    /* 내비게이션 */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: rgba(231, 232, 209, 0.95);
+      border-bottom: 1px solid var(--border-color);
+      backdrop-filter: blur(6px);
+    }
+
+    .nav-inner {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    /* 헤더 */
+    header {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 72px 20px;
+      text-align: center;
+    }
+
+    .header-inner {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      font-size: 1.15rem;
+      color: var(--secondary);
+      font-weight: 500;
+    }
+
+    /* 공통 섹션 */
+    section {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 64px 20px;
+    }
+
+    .section-title {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 28px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--primary);
+      display: inline-block;
+    }
+
+    /* 소개 섹션 */
+    .about-card {
+      background-color: var(--secondary);
+      border-radius: 14px;
+      padding: 32px;
+      border: 1px solid var(--border-color);
+    }
+
+    .about-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .about-meta span strong {
+      color: var(--primary);
+      margin-right: 6px;
+    }
+
+    .about-reflection {
+      background-color: var(--white);
+      padding: 20px 24px;
+      border-radius: 10px;
+      border-left: 4px solid var(--primary);
+      font-size: 1.05rem;
+      color: var(--text-dark);
+    }
+
+    /* 프로젝트 갤러리 */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-bottom: 44px;
+    }
+
+    .gallery-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .img-wrapper {
+      width: 100%;
+      height: 320px;
+      background-color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .card-body {
+      padding: 16px 18px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 6px;
+    }
+
+    .card-badge {
+      display: inline-block;
+      background-color: var(--secondary);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* 영상 갤러리 */
+    .media-subtitle {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 18px;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .video-card {
+      background-color: var(--white);
+      border-radius: 12px;
+      padding: 18px;
+      border: 1px solid var(--border-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .video-card video {
+      width: 100%;
+      max-height: 360px;
+      background-color: #1A1817;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .video-controls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .video-label {
+      font-weight: 700;
+      font-size: 0.98rem;
+      color: var(--text-dark);
+    }
+
+    .play-btn {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      padding: 9px 18px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    .play-btn:hover {
+      opacity: 0.88;
+    }
+
+    /* 스킬 섹션 */
+    .skills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill-tag {
+      background-color: var(--secondary);
+      color: var(--text-dark);
+      border: 1px solid var(--primary);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* 연락처 섹션 */
+    .contact-box {
+      background-color: var(--secondary);
+      border-radius: 14px;
+      padding: 28px 32px;
+      border: 1px solid var(--border-color);
+    }
+
+    .contact-box p {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .contact-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-box a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .contact-box a:hover {
+      text-decoration: underline;
+    }
+
+    /* 푸터 */
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      text-align: center;
+      padding: 28px 20px;
+      margin-top: 40px;
+      font-size: 0.95rem;
+    }
+
+    footer .ai-notice {
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    /* 반응형 (모바일) */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      .nav-inner {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .video-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .img-wrapper {
+        height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 내비게이션 -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#top" class="nav-logo">박영선 포트폴리오</a>
+      <ul class="nav-links">
+        <li><a href="#about">소개</a></li>
+        <li><a href="#gallery">프로젝트 갤러리</a></li>
+        <li><a href="#skills">스킬</a></li>
+        <li><a href="#contact">연락처</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- 헤더 -->
+  <header id="top">
+    <div class="header-inner">
+      <h1>박영선</h1>
+      <p>더 나은 사람이 되기 위해 발전하는 노인 전문 간호사를 목표로 공부하는 간호학과 학생입니다.</p>
+    </div>
+  </header>
+
+  <!-- 소개 -->
+  <section id="about">
+    <h2 class="section-title">소개</h2>
+    <div class="about-card">
+      <div class="about-meta">
+        <span><strong>이름</strong> 박영선</span>
+        <span><strong>학과</strong> 간호학과</span>
+      </div>
+      <div class="about-reflection">
+        <strong>이번 학기 느낀 점:</strong><br />
+        공부하는 과정이 힘들기도 하지만, 더 나은 사람이 되기 위해 발전하는 노인 전문 간호사가 되기 위해 열심히 공부하고 있습니다.
+      </div>
+    </div>
+  </section>
+
+  <!-- 프로젝트 갤러리 -->
+  <section id="gallery">
+    <h2 class="section-title">프로젝트 갤러리</h2>
+
+    <div class="gallery-grid">
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work1.png" alt="간호학과 카드 뉴스 1" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work2.png" alt="간호학과 카드 뉴스 2" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work3.png" alt="간호학과 카드 뉴스 3" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work4.png" alt="간호학과 카드 뉴스 4" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work5.png" alt="간호학과 카드 뉴스 5" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work6.png" alt="간호학과 카드 뉴스 6-1" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work6.png" alt="간호학과 카드 뉴스 6-2" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 카드 뉴스</h3>
+          <span class="card-badge">7 주차, chagpt</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work7.png" alt="간호학과 명함 앞" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 명함 앞</h3>
+          <span class="card-badge">6 주차, gemini</span>
+        </div>
+      </article>
+
+      <article class="gallery-card">
+        <div class="img-wrapper">
+          <img src="images/work8.png" alt="간호학과 명함 뒤" />
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">간호학과 명함 뒤</h3>
+          <span class="card-badge">6 주차, gemini</span>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="media-subtitle">영상 프로젝트</h3>
+    <div class="video-grid">
+      <div class="video-card">
+        <video id="video-promo" src="images/promo.mp4" playsinline preload="metadata"></video>
+        <div class="video-controls">
+          <span class="video-label">홍보 영상 (promo.mp4)</span>
+          <button type="button" class="play-btn" onclick="toggleVideo('video-promo', this)">▶ 재생</button>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <video id="video-lils" src="images/lils.mp4" playsinline preload="metadata"></video>
+        <div class="video-controls">
+          <span class="video-label">릴스 영상 (lils.mp4)</span>
+          <button type="button" class="play-btn" onclick="toggleVideo('video-lils', this)">▶ 재생</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 스킬 -->
+  <section id="skills">
+    <h2 class="section-title">스킬</h2>
+    <div class="skills-wrap">
+      <span class="skill-tag">간호학 기초 지식</span>
+      <span class="skill-tag">노인 간호 이해</span>
+      <span class="skill-tag">카드 뉴스 기획 및 제작</span>
+      <span class="skill-tag">생성형 AI 활용 (ChatGPT · Gemini)</span>
+      <span class="skill-tag">HTML / CSS 웹 구성</span>
+    </div>
+  </section>
+
+  <!-- 연락처 -->
+  <section id="contact">
+    <h2 class="section-title">연락처</h2>
+    <div class="contact-box">
+      <p><strong>소속:</strong> 간호학과 박영선</p>
+      <p><strong>E-mail:</strong> <a href="mailto:harrynsimon@gmail.com">harrynsimon@gmail.com</a></p>
+    </div>
+  </section>
+
+  <!-- 푸터 -->
+  <footer>
+    <p class="ai-notice">이 사이트의 글과 작품은 AI 도구의 도움으로 만들고 직접 다듬었습니다</p>
+    <p>&copy; 2026 박영선. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleVideo(videoId, btn) {
+      const video = document.getElementById(videoId);
+      if (video.paused) {
+        video.play();
+        btn.textContent = "❚❚ 일시정지";
+      } else {
+        video.pause();
+        btn.textContent = "▶ 재생";
+      }
+      video.onended = function () {
+        btn.textContent = "▶ 재생";
+      };
+    }
+  </script>
+</body>
+</html>
